@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarity</title>
+    <link rel="icon" type="image/x-icon" href="./Assets/favicon.png">
+    <link rel="stylesheet" href="styles3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>Clarity</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li class="nav-item active" data-section="tasks">
+                        <a href="#tasks"><i class="fas fa-tasks"></i> All Tasks</a>
+                    </li>
+                    <li class="nav-item" data-section="today">
+                        <a href="#today"><i class="fas fa-calendar-day"></i> Today</a>
+                    </li>
+                    <li class="nav-item" data-section="upcoming">
+                        <a href="#upcoming"><i class="fas fa-calendar-week"></i> Upcoming</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Pomodoro Timer -->
+            <div class="pomodoro-section">
+                <h3><i class="fas fa-clock"></i> Pomodoro Timer</h3>
+                <div class="timer-display">
+                    <span id="timer">25:00</span>
+                </div>
+                <div class="timer-controls">
+                    <button id="start-timer" class="timer-btn">
+                        <i class="fas fa-play"></i> Start
+                    </button>
+                    <button id="reset-timer" class="timer-btn">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+                <div class="timer-settings">
+                    <h4>Timer Settings</h4>
+                    <div class="setting-group">
+                        <label>
+                            Work Time (minutes)
+                            <input type="number" id="work-time" value="25" min="1" max="60">
+                        </label>
+                        <label>
+                            Break Time (minutes)
+                            <input type="number" id="break-time" value="5" min="1" max="30">
+                        </label>
+                    </div>
+                    <button id="save-settings" class="settings-btn">
+                        <i class="fas fa-save"></i> Save Settings
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="theme-toggle">
+                    <button id="theme-switch"><i class="fas fa-moon"></i></button>
+                </div>
+            </header>
+
+            <div class="task-section" id="tasks-section">
+                <div class="task-header">
+                    <h2>All Tasks</h2>
+                    <div class="label-filters">
+                        <button class="label-filter active" data-label="all">All</button>
+                        <button class="label-filter" data-label="work">Work</button>
+                        <button class="label-filter" data-label="personal">Personal</button>
+                        <button class="label-filter" data-label="urgent">Urgent</button>
+                    </div>
+                    <button class="add-task-btn">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                </div>
+
+                <div class="task-list-container">
+                    <div class="task-list">
+                        <!-- Tasks will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Task Modal -->
+    <div class="modal" id="task-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Add New Task</h2>
+            <form id="task-form">
+                <div class="form-group">
+                    <label for="task-title">Task Title</label>
+                    <input type="text" id="task-title" placeholder="Enter task title" required>
+                </div>
+                <div class="form-group">
+                    <label for="task-description">Description</label>
+                    <textarea id="task-description" placeholder="Enter task description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="task-due-date">Due Date</label>
+                    <input type="datetime-local" id="task-due-date">
+                </div>
+                <div class="form-group">
+                    <label>Labels</label>
+                    <div class="label-selector">
+                        <span class="label work" data-label="work">Work</span>
+                        <span class="label personal" data-label="personal">Personal</span>
+                        <span class="label urgent" data-label="urgent">Urgent</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Subtasks</label>
+                    <div class="subtask-input">
+                        <input type="text" placeholder="Add subtask">
+                        <button type="button" class="add-subtask">Add</button>
+                    </div>
+                    <ul class="subtask-list"></ul>
+                </div>
+                <button type="submit">Save Task</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app1.js"></script>
+    <script src="app2.js"></script>
+</body>
+</html>
